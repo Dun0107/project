@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sendmail.component.scss']
 })
 export class SendmailComponent implements OnInit {
+  
 
   constructor() { }
 
