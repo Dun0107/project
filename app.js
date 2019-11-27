@@ -6,8 +6,8 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const app = express();
 const users = require('./routes/users');
-
 const config = require('./config/database');
+const nodemailer = require("nodemailer");
 
 mongoose.connect(config.database, { useNewUrlParser: true });
 
@@ -50,3 +50,43 @@ app.get('/login', (req, res) => {
 app.listen(port, () => {
   console.log(`Server started on port ${port}!`);
 });
+
+app.post("/sendmail", (req, res) => {
+  console.log("request came");
+  let user = req.body;
+  sendMail(user, (err, info) => {
+    if (err) {
+      console.log(err);
+      res.status(400);
+      res.send({ error: "Failed to send email" });
+    } else {
+      console.log("Email has been sent");
+      res.send(info);
+    }
+  });
+});
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "testG4eng@gmail.com",
+      pass: "didrudah2"
+    }
+  }); 
+
+const mailOptions = {
+  from: "testG4eng@gmail.com",
+  to: `fover32@gmail.com`,
+  subject: "<Message subject>",
+  html: "<h1>And here is the place for HTML</h1>"
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});  
