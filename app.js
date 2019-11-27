@@ -51,42 +51,51 @@ app.listen(port, () => {
   console.log(`Server started on port ${port}!`);
 });
 
-app.post("/sendmail", (req, res) => {
-  console.log("request came");
-  let user = req.body;
-  sendMail(user, (err, info) => {
-    if (err) {
-      console.log(err);
-      res.status(400);
-      res.send({ error: "Failed to send email" });
-    } else {
-      console.log("Email has been sent");
-      res.send(info);
+app.post('/sendFormData', (req, res) => {
+  console.log(req.body, 'data of form');
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    secure: 'true',
+    port: '465',
+    auth: {
+      user: 'testG4eng@gmail.com', // must be Gmail
+      pass: 'didrudah2'
     }
   });
-});
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: "testG4eng@gmail.com",
-      pass: "didrudah2"
+  var mailOptions = {
+    from: 'testG4eng@gmail.com',
+    to: `<${req.body.email}>`, // must be Gmail
+    cc:`${req.body.name} <${req.body.email}>`,
+    subject: 'Sending Email using Node.js',
+    html: `
+            <table style="width: 100%; border: none">
+              <thead>
+                <tr style="background-color: #000; color: #fff;">
+                  <th style="padding: 10px 0">Name</th>
+                  <th style="padding: 10px 0">E-mail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style="text-align: center">${req.body.name}</th>
+                  <td style="text-align: center">${req.body.email}</td>
+                </tr>
+              </tbody>
+            </table>
+          `
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).json({
+        message: 'successfuly sent!'
+      })
     }
-  }); 
+  });
 
-const mailOptions = {
-  from: "testG4eng@gmail.com",
-  to: `fover32@gmail.com`,
-  subject: "<Message subject>",
-  html: "<h1>And here is the place for HTML</h1>"
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});  
+});

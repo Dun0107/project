@@ -21,7 +21,7 @@ import { GyosuComponent } from './components/gyosu/gyosu.component';
 import { CalComponent } from './components/cal/cal.component';
 import { IsComponent } from './components/is/is.component';
 import { WriteComponent } from './components/write/write.component';
-
+import { SendmailComponent } from './components/sendmail/sendmail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { WriteComponent } from './components/write/write.component';
     GyosuComponent,
     CalComponent,
     WriteComponent,
-    IsComponent
+    IsComponent,
+    SendmailComponent
   ],
   imports: [
     BrowserModule,
