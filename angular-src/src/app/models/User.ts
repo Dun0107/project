@@ -22,3 +22,7 @@ export class User {
     age: number;
   }
   
+  export class Sendmail {
+    name: string;
+    username: string;
+  }

@@ -26,5 +26,17 @@ export class SendmailComponent implements OnInit {
           name: this.name,
           username: this.username
         }
+    console.log(login.name, login.username);
+/*
+    this.authService.authenticateUser(login).subscribe(data => {
+        if(data.success) {
+          this.authService.storeUserData(data.token, data.user);
+          this.flashMessage.show('You are now logged in', 
+            {cssClass: 'alert-success', timeout: 5000});
+        } else {
+          this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
+        }
+      });
+      */
   }
 }
