@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
-const httpOptions = {
+const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
@@ -21,6 +21,10 @@ authToken: any;
 constructor(private http: HttpClient,
 public jwtHelper: JwtHelperService
 ) { }
+
+sendEmail(obj): Observable<User> {
+    return this.http.post<User>('http://localhost:3000/sendFormData', obj)
+  }
 
   registerUser(user): Observable<any> {
     const registerUrl = 'http://localhost:3000/users/register';
