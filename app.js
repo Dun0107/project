@@ -8,6 +8,7 @@ const app = express();
 const users = require('./routes/users');
 const config = require('./config/database');
 const nodemailer = require("nodemailer");
+const User = require('./models/user');
 
 mongoose.connect(config.database, { useNewUrlParser: true });
 
@@ -38,8 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 const port = process.env.PORT || 3000;
 
 app.post('/sendmail', (req, res) => {
-  console.log(req.body, 'data of form');
-
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -54,7 +53,7 @@ app.post('/sendmail', (req, res) => {
     from: 'testG4eng@gmail.com',
     to: `<${req.body.email}>`, // must be Gmail
     cc:`${req.body.name} <${req.body.email}>`,
-    subject: 'Sending Email using Node.js',
+    subject: '임시 비밀번호 발급 메일입니다.',
     html: `
             <table style="width: 100%; border: none">
               <thead>
@@ -83,6 +82,15 @@ app.post('/sendmail', (req, res) => {
       })
     }
   });
+/*
+  User.getUserByNameUsername(login.name, login.email, (err, users) => {
+    if(err) {
+      res.json({success: false, msg: 'Failed to register user'});
+    }
+    else {
+      res.json({success: true, msg: ''}); }
+  });
+  */
 });
 
 app.get('/', (req, res) => {
