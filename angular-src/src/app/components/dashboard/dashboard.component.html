@@ -1,0 +1,30 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<br />
+<div class="text-center">
+  <h2>이병천 교수님께 질문 남기기</h2>
+  <br />
+  <div style="border-top:1px solid black;">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>제목</th>
+          <th>작성자</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let write of users">
+          <td>{{ write.title }}</td>
+          <td>{{ write.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+
+    <button type="button" onclick="location.href='./write'">글 작성하기</button>
+  </div>
+</div>
