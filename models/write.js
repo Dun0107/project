@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const config = require('../config/database');
+const mongoose = require("mongoose");
+const config = require("../config/database");
 
 const WriteSchema = mongoose.Schema({
-  name: {
+  stu: {
     type: String
   },
   title: {
@@ -15,10 +15,14 @@ const WriteSchema = mongoose.Schema({
   }
 });
 
-const Write1 = mongoose.model('Write', WriteSchema);
+const Write1 = mongoose.model("Write", WriteSchema);
 
-Write1.addWrite = function (newWrite, callback) {
+Write1.addWrite = function(newWrite, callback) {
   newWrite.save(callback);
-}
+};
+
+Write1.getAll = function(callback) {
+  Write1.find(callback);
+};
 
 module.exports = Write1;

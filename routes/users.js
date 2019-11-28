@@ -39,7 +39,7 @@ router.post("/register", (req, res, next) => {
 
 router.post("/write", (req, res, next) => {
   let newWrite = new Write({
-    name: req.body.name,
+    stu: req.body.stu,
     title: req.body.title,
     content: req.body.content
   });
@@ -111,9 +111,9 @@ router.get(
 );
 
 router.get("/list", (req, res, next) => {
-  User.getAll((err, users) => {
+  Write.getAll((err, writes) => {
     if (err) throw err;
-    res.json(users);
+    res.json(writes);
   });
 });
 

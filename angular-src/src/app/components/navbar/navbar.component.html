@@ -38,9 +38,6 @@
         </select>
       </li>
       <li *ngIf="checkLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="./board">질문리스트</a>
-      </li>
-      <li *ngIf="checkLoggedIn()" class="nav-item">
         <select name="gyosu" onchange="location.href=this.value">
           <option value="#">과제 제출</option>
           <option value="./gyosu">이병천 교수님</option>

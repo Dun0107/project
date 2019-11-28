@@ -8,10 +8,10 @@ import { BoardService } from "src/app/services/board.service";
 })
 export class DashboardComponent implements OnInit {
   constructor(private boardService: BoardService) {}
-  users: any;
+  writes: any;
   ngOnInit() {
-    this.boardService.getList().subscribe(users => {
-      this.users = users;
+    this.boardService.getList().subscribe(writes => {
+      this.writes = writes;
     });
   }
 }
