@@ -7,7 +7,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { JwtModule } from '@auth0/angular-jwt'; 
-
+import { BoardService } from './services/board.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,8 @@ import { GyosuComponent } from './components/gyosu/gyosu.component';
 import { CalComponent } from './components/cal/cal.component';
 import { IsComponent } from './components/is/is.component';
 import { WriteComponent } from './components/write/write.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { WriteComponent } from './components/write/write.component';
     GyosuComponent,
     CalComponent,
     WriteComponent,
-    IsComponent
+    IsComponent,
+    UserEditComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,7 @@ import { WriteComponent } from './components/write/write.component';
     })
 
   ],
-  providers: [ValidateService, AuthService, FlashMessagesService], 
+  providers: [ValidateService, AuthService, BoardService, FlashMessagesService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

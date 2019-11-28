@@ -25,4 +25,16 @@ user.password == undefined
     return re.test(email);
   }
 
+
+validateWrite(board) {
+        if(
+    board.name == undefined || 
+    board.title == undefined || 
+    board.title == undefined     
+    ) {
+           return false;
+    } else {
+      return true;
+    }
+  }
 }
