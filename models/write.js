@@ -21,4 +21,8 @@ Write1.addWrite = function (newWrite, callback) {
   newWrite.save(callback);
 }
 
+Write1.getAll = function(callback) {
+  Write1.find(callback);
+};
+
 module.exports = Write1;

@@ -13,7 +13,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ReboardService {
+
+  [x: string]: any;
+  ReboardToken: any;
   view : View;
+  
 
   constructor(private http: HttpClient) {}
 
@@ -26,4 +30,22 @@ export class ReboardService {
       return this.http.post(viewUrl, view, httpOptions);
     }
     
+  getList2(): Observable<any> {
+    this.ReboardToken = localStorage.getItem("id_token");
+    const httpOptions1 = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: this.ReboardToken
+      })
+    };
+    const list2Url = "http://localhost:3000/users/list2";
+    return this.http.get(list2Url, httpOptions1);
+  }
+  storeViewData(token, view) {
+    localStorage.setItem("id_token", token);
+    localStorage.setItem("write", JSON.stringify(view));
+    this.ReboardToken = token;
+    this.view = view;
+  }
 }
+

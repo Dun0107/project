@@ -39,14 +39,15 @@ export class WriteComponent implements OnInit {
     this.BoardService.writeUser(write).subscribe(data => {
       if(data.success)
      {
-        this.flashMessage.show("Save!",{cssClass:'alert-success', timeout: 3000});
+        this.flashMessage.show("글이 저장되었습니다.",{cssClass:'alert-success', timeout: 3000});
         this.router.navigate(['./dashboard']);
       }
       else
       {
-        this.flashMessage.show('Wrong...',{cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessage.show('글 저장에 실패했습니다.',{cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['./dashboard']);
       }
     });
   }
 }
+

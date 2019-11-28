@@ -9,12 +9,6 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="./">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li *ngIf="!checkLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="./login">Login</a>
-      </li>
-      <li *ngIf="!checkLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="./register">Register</a>
-      </li>
       <li *ngIf="checkLoggedIn()" class="nav-item">
         <a class="nav-link" routerLink="./profile">Profile</a>
       </li>
@@ -36,7 +30,16 @@
           <option value="">양정모 교수님</option>
         </select>
       </li>
-      <li *ngIf="checkLoggedIn()" class="nav-item"><a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a></li>
     </ul>
+
+      <ul class="nav navbar-nav navbar-right">        
+      <li *ngIf="!checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./login">Login</a>
+        </li>
+        <li *ngIf="!checkLoggedIn()" class="nav-item">
+            <a class="nav-link" routerLink="./register">Register</a>
+          </li>
+      <li *ngIf="checkLoggedIn()" class="nav-item"><a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a></li>
+      </ul>
   </div>
 </nav>

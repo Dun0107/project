@@ -129,19 +129,26 @@ router.get(
   }
 );
 
-// router.get("/dashboard", (req, res, next) => {
-//   User.getAll((err, writes) => {
-//     if (err) throw err;
-//     res.json(writes);
-//   });
-// });
+router.get("/list", (req, res, next) => {
+  Write.getAll((err, writes) => {
+    if (err) throw err;
+    res.json(writes);
+  });
+});
 
-// router.get("/dashboard", (req, res, next) => {
-//   User.getAll((err, views) => {
-//     if (err) throw err;
-//     res.json(views);
+router.get("/list2", (req, res, next) => {
+  View.getAll((err, views) => {
+    if (err) throw err;
+    res.json(views);
+  });
+});
+
+// router.get("/list", (req, res, next) => {
+//     User.getAll((err, writes) => {
+//       if (err) throw err;
+//       res.json(writes);
+//     });
 //   });
-// });
 
 module.exports = router;
 

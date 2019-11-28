@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ReboardService } from '../../services/reboard.service';
+import { BoardService } from '../../services/board.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,13 +16,24 @@ export class ViewComponent implements OnInit {
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private ReboardService: ReboardService,
-    private router: Router
+    private router: Router,
+    private boardService: BoardService
   ) { }
+
+    writes: any;
+    views : any;
 
     name : string;
     content : string; 
 
   ngOnInit() {
+    this.boardService.getList().subscribe(writes => {
+      this.writes = writes;
+    });
+
+    this.ReboardService.getList2().subscribe(views => {
+      this.views = views;
+    });
   }
   
   onViewSubmit(){

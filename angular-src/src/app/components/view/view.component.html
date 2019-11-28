@@ -3,36 +3,45 @@
 <br>
 
 <div style="border :0.5px solid black ">
-<table class="table" width="580" height="400">
-    <tr>
-        <td width="240" height="10">
-            글 번호 : 1&nbsp;
-        </td>
-        <td width="240" height="10">
-            글쓴이 : 박지윤 &nbsp;
-        </td>
-    </tr>
-    <tr>
+<table class="table" width="580" height="800">
+    <tr *ngFor="let write of writes">
         <td height="10" colspan=4 text-align=center>
-           제목 : 질문입니다&nbsp;
+            제목 : {{ write.title }}&nbsp;
         </td>
     </tr>
-    <tr>
+
+    <tr *ngFor="let write of writes">
+        <td height="10" colspan=4>
+            글쓴이 : {{ write.name }} &nbsp;
+        </td>
+    </tr>
+
+    <tr *ngFor="let write of writes">
         <td>
-            <pre> 과제 기한 알려주세요 &nbsp;</pre>
+            <pre > {{ write.content }} &nbsp;</pre>
         </td>
     </tr>
-    <tr>
+    <tr *ngFor="let view of views">
         <td height="20">
-            댓글 : 모르겠어요&nbsp;
+            댓글 : {{ view.content }}&nbsp;
         </td>
         <td height=10 width="420">
-            댓글 글쓴이: 한수연 &nbsp;
+            댓글 글쓴이: {{ view.name }}&nbsp;
         </td>
     </tr>
-</table>
-</div>
-<br>
+    </table>
+    </div>
+
+    <!-- <tr>
+        <td height="20">
+            댓글 : &nbsp;
+        </td>
+        <td height=10 width="420">
+            댓글 글쓴이: &nbsp;
+        </td>
+    </tr> -->
+
+
 
 <form (ngSubmit)="onViewSubmit()" width="580">
     <div style="width: 80%; float: left;">

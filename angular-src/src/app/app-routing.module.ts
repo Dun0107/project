@@ -11,8 +11,9 @@ import { GyosuComponent } from './components/gyosu/gyosu.component';
 import { CalComponent } from './components/cal/cal.component';
 import { IsComponent } from './components/is/is.component';
 import { WriteComponent } from './components/write/write.component';
-import { AuthGuard } from './guards/auth.guard';
+import { ViewComponent } from './components/view/view.component';
 
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 {path: "", component:HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
 {path:'cal', component: CalComponent},
 {path:'is', component: IsComponent},
 {path:'write', component: WriteComponent},
+{path:'view', component: ViewComponent},
 ];
 
 

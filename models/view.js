@@ -17,4 +17,8 @@ View1.addView = function (newView, callback) {
   newView.save(callback);
 }
 
+View1.getAll = function(callback) {
+    View1.find(callback);
+  };
+  
 module.exports = View1;
