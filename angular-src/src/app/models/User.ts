@@ -25,4 +25,5 @@ export class User {
   export class Sendmail {
     name: string;
     username: string;
+    email: string;
   }

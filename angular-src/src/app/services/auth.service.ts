@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
+import { Sendmail } from '../models/User'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -22,8 +23,8 @@ constructor(private http: HttpClient,
 public jwtHelper: JwtHelperService
 ) { }
 
-sendEmail(obj): Observable<User> {
-    return this.http.post<User>('http://localhost:3000/sendFormData', obj)
+sendEmail(obj): Observable<Sendmail> {
+    return this.http.post<Sendmail>('http://localhost:3000/sendmail', obj)
   }
 
   registerUser(user): Observable<any> {

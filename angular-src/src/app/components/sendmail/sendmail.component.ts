@@ -10,7 +10,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class SendmailComponent implements OnInit {
   name: string;
-  username: string;
+  email: string;
 
   constructor(
     private authService: AuthService,
@@ -24,9 +24,9 @@ export class SendmailComponent implements OnInit {
   onLoginSubmit(){
         const login = {
           name: this.name,
-          username: this.username
+          email: this.email
         }
-    console.log(login.name, login.username);
+    console.log(login.name, login.email);
 /*
     this.authService.authenticateUser(login).subscribe(data => {
         if(data.success) {
@@ -38,5 +38,12 @@ export class SendmailComponent implements OnInit {
         }
       });
       */
-  }
+     this.authService.sendEmail(login).subscribe(data => {
+       let msg = data['message']
+       alert(msg);
+     }, error =>{
+        console.log(error,"error");
+     });
+      
+     }
 }
