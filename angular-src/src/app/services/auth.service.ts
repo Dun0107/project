@@ -27,6 +27,10 @@ sendEmail(obj): Observable<Sendmail> {
     return this.http.post<Sendmail>('http://localhost:3000/sendmail', obj)
   }
 
+  getEmail(obj): Observable<Sendmail> {
+    return this.http.post<Sendmail>('http://localhost:3000/getemail', obj)
+  }
+
   registerUser(user): Observable<any> {
     const registerUrl = 'http://localhost:3000/users/register';
     return this.http.post(registerUrl, user, httpOptions);

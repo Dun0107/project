@@ -35,6 +35,24 @@ router.post("/register", (req, res, next) => {
   });
 });
 
+// getEmail 이메일 가져오기
+router.post("/getemail", (req, res, next) => {
+  let newInfo = new User({
+    name: req.body.name,
+    username: req.body.username,
+  });
+
+  User.getUserByNameUsername(newInfo, (err, user) => {
+    if (err) throw err;
+    if (!user) {
+      return res.json({
+        success: false,
+        msg: "회원이 아닙니다"
+      });
+    }     
+  })
+})
+
 // Authenticate 사용자인증, 로그인
 router.post("/authenticate", (req, res, next) => {
   const username = req.body.username;
