@@ -38,8 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // port number 
 const port = process.env.PORT || 3000;
 
+
+
 app.post('/sendmail', (req, res) => {
-  var transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     secure: 'true',
@@ -49,9 +51,10 @@ app.post('/sendmail', (req, res) => {
       pass: 'didrudah2'
     }
   });
+  
   var mailOptions = {
     from: 'testG4eng@gmail.com',
-    to: `<${req.body.email}>`, // must be Gmail
+    to: `<${req.body.email}>`,
     cc:`${req.body.name} <${req.body.email}>`,
     subject: '임시 비밀번호 발급 메일입니다.',
     html: `
@@ -59,12 +62,14 @@ app.post('/sendmail', (req, res) => {
               <thead>
                 <tr style="background-color: #000; color: #fff;">
                   <th style="padding: 10px 0">이름</th>
+                  <th style="padding: 10px 0">학번</th>
                   <th style="padding: 10px 0">임시 비밀번호</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th style="text-align: center">${req.body.name}</th>
+                  <td style="text-align: center">${req.body.name}</td>
+                  <td style="text-align: center">${req.body.username}</td>
                   <td style="text-align: center">${req.body.email}</td>
                 </tr>
               </tbody>
@@ -82,15 +87,6 @@ app.post('/sendmail', (req, res) => {
       })
     }
   });
-/*
-  User.getUserByNameUsername(login.name, login.email, (err, users) => {
-    if(err) {
-      res.json({success: false, msg: 'Failed to register user'});
-    }
-    else {
-      res.json({success: true, msg: ''}); }
-  });
-  */
 });
 
 app.get('/', (req, res) => {

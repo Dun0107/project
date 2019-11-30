@@ -36,7 +36,7 @@ User1.getUserByUsername = function (username, callback) {
   User1.findOne(query, callback);
 }
 
-User1.getUserbyNameUsername = function (name, username, callback) {
+User1.getUserbyInfo = function (name, username, callback) {
   const query = { name: name, username: username };
   User1.findOne(query, callback);
 }

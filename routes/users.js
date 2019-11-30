@@ -42,16 +42,62 @@ router.post("/getemail", (req, res, next) => {
     username: req.body.username,
   });
 
-  User.getUserByNameUsername(newInfo, (err, user) => {
+  User.getUserByInfo(newInfo.name, newInfo.username, (err, email) => {
     if (err) throw err;
-    if (!user) {
-      return res.json({
-        success: false,
-        msg: "회원이 아닙니다"
-      });
-    }     
-  })
+    if (email) {
+      console.log(email);
+    }
+  });
 })
+
+router.post('/sendmail', (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    secure: 'true',
+    port: '465',
+    auth: {
+      user: 'testG4eng@gmail.com', // must be Gmail
+      pass: 'didrudah2'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'testG4eng@gmail.com',
+    to: `<${req.body.email}>`,
+    cc:`${req.body.name} <${req.body.email}>`,
+    subject: '임시 비밀번호 발급 메일입니다.',
+    html: `
+            <table style="width: 100%; border: none">
+              <thead>
+                <tr style="background-color: #000; color: #fff;">
+                  <th style="padding: 10px 0">이름</th>
+                  <th style="padding: 10px 0">학번</th>
+                  <th style="padding: 10px 0">임시 비밀번호</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center">${req.body.name}</td>
+                  <td style="text-align: center">${req.body.username}</td>
+                  <td style="text-align: center">${req.body.email}</td>
+                </tr>
+              </tbody>
+            </table>
+          `
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).json({
+        message: 'successfuly sent!'
+      })
+    }
+  });
+});
 
 // Authenticate 사용자인증, 로그인
 router.post("/authenticate", (req, res, next) => {

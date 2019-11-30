@@ -23,14 +23,14 @@ export class SendmailComponent implements OnInit {
   }
 
   onLoginSubmit(){
-        const login = {
+        var login = {
           name: this.name,
           username: this.username,
           email: this.email
         }
-    
-    
-     console.log(login.name, login.email);
+
+     console.log(login.name, login.username);
+
      this.authService.sendEmail(login).subscribe(data => {
        let msg = data['message']
        alert(msg);

@@ -17,6 +17,7 @@ providedIn: 'root'
 export class AuthService {
 authToken: any;
   user: User;
+  sendmail: Sendmail;
 
 
 constructor(private http: HttpClient,
@@ -27,7 +28,7 @@ sendEmail(obj): Observable<Sendmail> {
     return this.http.post<Sendmail>('http://localhost:3000/sendmail', obj)
   }
 
-  getEmail(obj): Observable<Sendmail> {
+  getEmail(obj) : Observable<Sendmail> {
     return this.http.post<Sendmail>('http://localhost:3000/getemail', obj)
   }
 
