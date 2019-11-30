@@ -7,6 +7,7 @@ const User = require("../models/user");
 const config = require("../config/database");
 
 const Write = require("../models/write");
+const View = require("../models/view");
 
 // Register 사용자등록
 router.post("/register", (req, res, next) => {
@@ -53,6 +54,20 @@ router.post('/write', (req, res, next) => {
   });
 });
 
+router.post('/view', (req, res, next) => {
+  let newView = new View({
+    name: req.body.name,
+    content: req.body.content,
+  });
+     
+  View.addView(newView, (err, view)=>{
+    if(err) {
+      res.json({success: false, msg: '댓글 등록 실패'});
+    } else {
+      res.json({success: true, msg: '댓글 등록 성공'});
+    }
+  });
+});
 
 // Authenticate 사용자인증, 로그인
 router.post("/authenticate", (req, res, next) => {
@@ -114,12 +129,19 @@ router.get(
   }
 );
 
-router.get("/list", (req, res, next) => {
-  User.getAll((err, users) => {
-    if (err) throw err;
-    res.json(users);
-  });
-});
+// router.get("/dashboard", (req, res, next) => {
+//   User.getAll((err, writes) => {
+//     if (err) throw err;
+//     res.json(writes);
+//   });
+// });
+
+// router.get("/dashboard", (req, res, next) => {
+//   User.getAll((err, views) => {
+//     if (err) throw err;
+//     res.json(views);
+//   });
+// });
 
 module.exports = router;
 
