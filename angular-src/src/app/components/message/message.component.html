@@ -2,14 +2,7 @@
 
 <br>
 
-<form (ngSubmit)="onWriteSubmit()">
-  <div class="form-group">
-    <label>제목</label>
-    <input type="text" [(ngModel)]="title" name="title" class="form-control">
-  </div>
-  <!-- <ul class="list-group">
-      <li class="list-group-item">학번: {{username}}</li>        
-  </ul> -->
+<form (ngSubmit)="onMessageSubmit()">
   <div class="form-group">
       <label>학번</label>
           <input type="text" class="form-control" name="name" [(ngModel)]="name">
@@ -21,7 +14,7 @@
 
 	  <input type="submit" class="btn btn-primary" value="Submit">&nbsp;
     
-    <button type="button" onclick="location.href='./dashboard'">취소</button>
+    <button type="button" onclick="location.href='./dashboard2'">취소</button>
 
 <br>
 

@@ -8,6 +8,7 @@ const config = require("../config/database");
 
 const Write = require("../models/write");
 const View = require("../models/view");
+const Message = require("../models/message");
 
 // Register 사용자등록
 router.post("/register", (req, res, next) => {
@@ -38,33 +39,67 @@ router.post("/register", (req, res, next) => {
   });
 });
 
-router.post('/write', (req, res, next) => {
+router.post("/newpw", (req, res, next) => {
+  let newUser = new User({
+    name: req.body.name,
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+    age: req.body.age
+  });
+
+  User.getUserByUsername(newUser.username, (err, user) => {
+    if (err) throw err;
+      User.addUser(newUser, (err, user) => {
+        if (err) {
+          res.json({ success: false, msg: "개인정보 수정 실패" });
+        } else {
+          res.json({ success: true, msg: "개인정보 수정 성공" });
+        }
+      });
+  });
+});
+
+
+router.post("/write", (req, res, next) => {
   let newWrite = new Write({
     name: req.body.name,
     title: req.body.title,
-    content: req.body.content,
+    content: req.body.content
   });
-     
-  Write.addWrite(newWrite, (err, write)=>{
-    if(err) {
-      res.json({success: false, msg: '게시글 등록 실패'});
+  Write.addWrite(newWrite, (err, write) => {
+    if (err) {
+      res.json({ success: false, msg: "게시글 등록 실패" });
     } else {
-      res.json({success: true, msg: '게시글 등록 성공'});
+      res.json({ success: true, msg: "게시글 등록 성공" });
     }
   });
 });
 
-router.post('/view', (req, res, next) => {
+router.post("/message", (req, res, next) => {
+  let newMessage = new Message({
+    name: req.body.name,
+    content: req.body.content
+  });
+  Message.addMessage(newMessage, (err, message) => {
+    if (err) {
+      res.json({ success: false, msg: "한줄 글 등록 실패" });
+    } else {
+      res.json({ success: true, msg: "한줄 글 등록 성공" });
+    }
+  });
+});
+
+router.post("/view", (req, res, next) => {
   let newView = new View({
     name: req.body.name,
-    content: req.body.content,
+    content: req.body.content
   });
-     
-  View.addView(newView, (err, view)=>{
-    if(err) {
-      res.json({success: false, msg: '댓글 등록 실패'});
+  View.addView(newView, (err, view) => {
+    if (err) {
+      res.json({ success: false, msg: "댓글 등록 실패" });
     } else {
-      res.json({success: true, msg: '댓글 등록 성공'});
+      res.json({ success: true, msg: "댓글 등록 성공" });
     }
   });
 });
@@ -94,7 +129,7 @@ router.post("/authenticate", (req, res, next) => {
           success: true,
           token: "JWT " + token,
           userNoPW: {
-            // id: user._id,
+            id: user._id,
             name: user.name,
             username: user.username,
             email: user.email,
@@ -111,58 +146,54 @@ router.post("/authenticate", (req, res, next) => {
   });
 });
 
-
-
 // profile 접근은 로그인 상태에서만 토큰을 이용하여 접근하도록 설정
 router.get(
   "/profile",
   passport.authenticate("jwt", { session: false }),
   (req, res, next) => {
-    res.json({
-      user: {
-        username: req.user.username,
-        email: req.user.email,
-        name: req.user.name,
-        age: req.user.age
-      }
+    // res.json({
+    //   user: {
+    //     username: req.user.username,
+    //     email: req.user.email,
+    //     name: req.user.name,
+    //     age: req.user.age
+    //   }
+    res.json({ user: req.user });
+  }
+);
+
+router.get( //dashboard
+  "/list",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    Write.getAll((err, writes) => {
+      if (err) throw err;
+      res.json(writes);
     });
   }
 );
 
-router.get("/list", (req, res, next) => {
-  Write.getAll((err, writes) => {
-    if (err) throw err;
-    res.json(writes);
-  });
-});
+router.get( //view
+  "/list2",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    View.getAll((err, views) => {
+      if (err) throw err;
+      res.json(views);
+    });
+  }
+);
 
-router.get("/list2", (req, res, next) => {
-  View.getAll((err, views) => {
-    if (err) throw err;
-    res.json(views);
-  });
-});
-
-// router.get("/list", (req, res, next) => {
-//     User.getAll((err, writes) => {
-//       if (err) throw err;
-//       res.json(writes);
-//     });
-//   });
+router.get( //dashboard2
+  "/list3",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    Message.getAll((err, messages) => {
+      if (err) throw err;
+      res.json(messages);
+    });
+  }
+);
 
 module.exports = router;
 
-// const express = require('express');
-// const router = express.Router();
-// const post=require('./models/post');
-// const database : 'mongodb://localhost:27017/meanauth'
-
-// router.get('/register', (req,res,next)=> {
-//   res.send('Register');
-// });
-
-
-
-
-
-// module.exports = router;

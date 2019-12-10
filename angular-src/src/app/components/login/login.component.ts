@@ -19,8 +19,7 @@ constructor(
 
 ) { }
 
-ngOnInit() {
-}
+ngOnInit() {}
   onLoginSubmit(){
     const login = {
       username: this.username,
@@ -30,9 +29,9 @@ ngOnInit() {
 this.authService.authenticateUser(login).subscribe(data => {
   if(data.success) {
     this.authService.storeUserData(data.token, data.user);
-    this.flashMessage.show('You are now logged in', 
+    this.flashMessage.show('로그인 되었습니다.', 
       {cssClass: 'alert-success', timeout: 5000});
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['gyosu']);
   } else {
     this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
     this.router.navigate(['login']);

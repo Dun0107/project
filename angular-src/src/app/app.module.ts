@@ -25,6 +25,11 @@ import { IsComponent } from './components/is/is.component';
 import { WriteComponent } from './components/write/write.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { ViewComponent } from './components/view/view.component';
+import { NewpwComponent } from './components/newpw/newpw.component';
+import { Cal2Component } from './components/cal2/cal2.component';
+import { MessageComponent } from './components/message/message.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+import { Gyosu2Component } from './components/gyosu2/gyosu2.component';
 
 
 @NgModule({
@@ -41,7 +46,12 @@ import { ViewComponent } from './components/view/view.component';
     WriteComponent,
     IsComponent,
     UserEditComponent,
-    ViewComponent
+    ViewComponent,
+    NewpwComponent,
+    Cal2Component,
+    MessageComponent,
+    Dashboard2Component,
+    Gyosu2Component
   ],
   imports: [
     BrowserModule,

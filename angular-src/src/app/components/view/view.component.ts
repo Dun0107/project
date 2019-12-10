@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
+  
 
   constructor(
     private validateService: ValidateService,

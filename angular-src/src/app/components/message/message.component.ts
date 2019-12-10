@@ -1,39 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 // import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { BoardService } from '../../services/board.service';
-import { AuthService } from '../../services/auth.service';
+import { Board2Service } from '../../services/board2.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-write',
-  templateUrl: './write.component.html',
-  styleUrls: ['./write.component.scss']
+  selector: 'app-message',
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.component.scss']
 })
-export class WriteComponent implements OnInit {
+export class MessageComponent implements OnInit {
 
-
-  constructor(
-    // private validateService: ValidateService,
+  constructor( // private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
-    private BoardService: BoardService,
+    private Board2Service: Board2Service,
     private router: Router,
-    private AuthService: AuthService,
     ) { }
 
-    title : string;
     name : string;
     content : string; 
-    
+
   ngOnInit() {
   }
 
-  onWriteSubmit(){
-    const write = {
-      title : this.title,
+  onMessageSubmit(){
+    const message = {
       name : this.name,
       content : this.content
     }
+
+
 
       // Required Fields
 //     if(!this.validateService.validateWrite(write)){
@@ -41,18 +37,18 @@ export class WriteComponent implements OnInit {
 //     return false;
 //     }
 
-    this.BoardService.writeUser(write).subscribe(data => {
+    this.Board2Service.messageUser(message).subscribe(data => {
       if(data.success)
      {
         this.flashMessage.show("글이 저장되었습니다.",{cssClass:'alert-success', timeout: 3000});
-        this.router.navigate(['./dashboard']);
+        this.router.navigate(['./dashboard2']);
       }
       else
       {
         this.flashMessage.show('글 저장에 실패했습니다.',{cssClass: 'alert-danger', timeout: 3000});
-        this.router.navigate(['./dashboard']);
+        this.router.navigate(['./dashboard2']);
       }
     });
   }
-}
 
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Write } from '../models/Board';
+import { Message } from '../models/Board2';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -12,10 +12,10 @@ const httpOptions = {
 @Injectable({
   providedIn: "root"
 })
-export class BoardService {
+export class Board2Service {
   [x: string]: any;
-  boardToken: any;
-  write: Write;
+  board2Token: any;
+  Message: Message;
 
   constructor(private http: HttpClient) {}
 
@@ -23,9 +23,9 @@ export class BoardService {
     return ep;
   }
 
-  writeUser(write): Observable<any> {
-    const writeUrl = "http://localhost:3000/users/write";
-    return this.http.post(writeUrl, write, httpOptions);
+  messageUser(message): Observable<any> {
+    const messageUrl = "http://localhost:3000/users/message";
+    return this.http.post(messageUrl, message, httpOptions);
   }
 
   // getList(): Observable<any> {
@@ -34,22 +34,22 @@ export class BoardService {
   // }
 
   //수연이코드
-  getList(): Observable<any> {
-    this.boardToken = localStorage.getItem("id_token");
+  getList3(): Observable<any> {
+    this.board2Token = localStorage.getItem("id_token");
     const httpOptions1 = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
-        Authorization: this.boardToken
+        Authorization: this.board2Token
       })
     };
-    const listUrl = "http://localhost:3000/users/list";
-    return this.http.get(listUrl, httpOptions1);
+    const list3Url = "http://localhost:3000/users/list3";
+    return this.http.get(list3Url, httpOptions1);
   }
-  storeWriteData(token, write) {
+  storeMessageData(token, message) {
     localStorage.setItem("id_token", token);
-    localStorage.setItem("write", JSON.stringify(write));
-    this.boardToken = token;
-    this.write = write;
+    localStorage.setItem("message", JSON.stringify(message));
+    this.board2Token = token;
+    this.message = message;
   }
 }
     

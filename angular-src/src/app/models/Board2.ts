@@ -1,6 +1,5 @@
-export class Write {
+export class Message {
       name: string;
-      title: string;
       content: string;
     }
     

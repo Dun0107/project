@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const config = require('../config/database');
 
 const ViewSchema = mongoose.Schema({
+
   name: {
     type: String
   },

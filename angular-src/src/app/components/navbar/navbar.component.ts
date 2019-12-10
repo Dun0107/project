@@ -10,7 +10,8 @@ styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
-constructor(private authService: AuthService,
+constructor(
+    private authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService
 ) { }
