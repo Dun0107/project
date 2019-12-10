@@ -1,0 +1,41 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+
+<h2 class="page-header">개인정보 수정하기</h2>
+
+<form (ngSubmit)="onNewpwSubmit()">
+  <div class="form-group">
+    <label>이름</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="name" />
+    <br />
+    <label>학번</label>
+    <input
+      type="text"
+      class="form-control"
+      name="username"
+      [(ngModel)]="username"
+    />
+    <br />
+    <label>이메일</label>
+    <input type="text" class="form-control" name="email" [(ngModel)]="email" />
+    <br />
+    <label>나이</label>
+    <input type="text" class="form-control" name="age" [(ngModel)]="age" />
+    <br />
+    <label>새로운 비밀번호</label>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      [(ngModel)]="password"
+    />
+  </div>
+  <input type="submit" class="btn btn-primary" value="수정하기" />
+  &nbsp;
+
+  <!-- <button type="button" onclick="location.href='링크'">비밀번호 찾기</button> -->
+</form>

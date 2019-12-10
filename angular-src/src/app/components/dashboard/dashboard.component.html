@@ -1,0 +1,35 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<br />
+<div class="text-center" style="width: 80%; float: left;">
+  <h2>질문 게시판</h2>
+</div>
+<div class="text-center" style="width: 20%; float: right;">
+  <button type="button" onclick="location.href='./write'">
+    질문글 작성하기
+  </button>
+</div>
+<br /><br /><br />
+<div class="text-center">
+  <table class="table">
+    <thead>
+      <tr>
+        <!-- <th width=10%>objectId</th> -->
+        <th width="70%">제목</th>
+        <th width="20%">작성자</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let write of writes">
+        <!-- <th width=10%>{{ write._id }}</th> -->
+        <td width="70%" onclick="location.href='./view'">{{ write.title }}</td>
+        <td width="20%">{{ write.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>
