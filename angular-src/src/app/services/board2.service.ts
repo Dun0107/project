@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Message } from '../models/Board2';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Message } from "../models/Board2";
 
-const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
-  
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json"
+  })
+};
+
 @Injectable({
   providedIn: "root"
 })
@@ -49,8 +49,6 @@ export class Board2Service {
     localStorage.setItem("id_token", token);
     localStorage.setItem("message", JSON.stringify(message));
     this.board2Token = token;
-    this.message = message;
+    this.Message = message;
   }
 }
-    
-

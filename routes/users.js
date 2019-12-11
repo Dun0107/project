@@ -50,16 +50,15 @@ router.post("/newpw", (req, res, next) => {
 
   User.getUserByUsername(newUser.username, (err, user) => {
     if (err) throw err;
-      User.addUser(newUser, (err, user) => {
-        if (err) {
-          res.json({ success: false, msg: "개인정보 수정 실패" });
-        } else {
-          res.json({ success: true, msg: "개인정보 수정 성공" });
-        }
-      });
+    User.addUser(newUser, (err, user) => {
+      if (err) {
+        res.json({ success: false, msg: "개인정보 수정 실패" });
+      } else {
+        res.json({ success: true, msg: "개인정보 수정 성공" });
+      }
+    });
   });
 });
-
 
 router.post("/write", (req, res, next) => {
   let newWrite = new Write({
@@ -162,7 +161,8 @@ router.get(
   }
 );
 
-router.get( //dashboard
+router.get(
+  //dashboard
   "/list",
   passport.authenticate("jwt", { session: false }),
   (req, res, next) => {
@@ -173,7 +173,8 @@ router.get( //dashboard
   }
 );
 
-router.get( //view
+router.get(
+  //view
   "/list2",
   passport.authenticate("jwt", { session: false }),
   (req, res, next) => {
@@ -184,7 +185,8 @@ router.get( //view
   }
 );
 
-router.get( //dashboard2
+router.get(
+  //dashboard2
   "/list3",
   passport.authenticate("jwt", { session: false }),
   (req, res, next) => {
@@ -196,4 +198,3 @@ router.get( //dashboard2
 );
 
 module.exports = router;
-

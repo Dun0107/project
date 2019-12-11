@@ -43,14 +43,14 @@ export class AuthService {
 
   getProfile(): Observable<any> {
     this.authToken = localStorage.getItem("id_token");
-    
+
     const httpOptions1 = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         Authorization: this.authToken
       })
     };
-    
+
     const profileUrl = "http://localhost:3000/users/profile";
     return this.http.get(profileUrl, httpOptions1);
   }

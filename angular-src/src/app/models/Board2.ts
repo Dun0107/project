@@ -1,5 +1,4 @@
-export class Message {
-      name: string;
-      content: string;
-    }
-    
+export class Message {
+  name: string;
+  content: string;
+}

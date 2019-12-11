@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const config = require('../config/database');
+const mongoose = require("mongoose");
+const config = require("../config/database");
 
 const MessageSchema = mongoose.Schema({
   name: {
@@ -11,14 +11,14 @@ const MessageSchema = mongoose.Schema({
   }
 });
 
-const Message1 = mongoose.model('Message', MessageSchema);
+const Message1 = mongoose.model("Message", MessageSchema);
 
-Message1.addMessage = function (newMessage, callback) {
+Message1.addMessage = function(newMessage, callback) {
   newMessage.save(callback);
-}
+};
 
 Message1.getAll = function(callback) {
-    Message1.find(callback);
+  Message1.find(callback);
 };
 
 module.exports = Message1;

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Gyosu2Component implements OnInit {
 
-  constructor() { }
+  inputList: object[];
+
+  constructor() {
+    this.inputList = [];
+   }
 
   ngOnInit() {
   }
 
+  addInput() {
+    this.inputList.push({value: ''});
+  }
 }

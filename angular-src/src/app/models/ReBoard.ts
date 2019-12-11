@@ -1,4 +1,4 @@
-export class View {
-      name: string;
-      content: string;
-    }
+export class View {
+  name: string;
+  content: string;
+}
