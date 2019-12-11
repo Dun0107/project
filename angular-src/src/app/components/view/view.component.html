@@ -4,7 +4,7 @@
 <br>
 
 <div style="border :0.5px solid black ">
-    <table class="table" width="580" height="800">
+    <table class="table" width="580">
         <tr *ngFor="let write of writes">
         <tr>
             <td height="10" colspan=4 text-align=center>
@@ -18,12 +18,16 @@
             </td>
         </tr>
 
-        <tr *ngFor="let write of writes">
+        <tr *ngFor="let write of writes" height="200">
             <td>
                 <pre> {{ write.content }} &nbsp;</pre>
             </td>
         </tr>
+
+
+        <!--댓글-->
         <tr *ngFor="let view of views">
+          <!-- <tr> -->
             <td height="20">
                 댓글 : {{ view.content }}&nbsp;
             </td>

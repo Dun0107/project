@@ -15,7 +15,7 @@ const httpOptions = {
 export class Board2Service {
   [x: string]: any;
   board2Token: any;
-  Message: Message;
+  message: Message;
 
   constructor(private http: HttpClient) {}
 
@@ -49,6 +49,6 @@ export class Board2Service {
     localStorage.setItem("id_token", token);
     localStorage.setItem("message", JSON.stringify(message));
     this.board2Token = token;
-    this.Message = message;
+    this.message = message;
   }
 }

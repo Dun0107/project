@@ -20,14 +20,14 @@ router.post("/register", (req, res, next) => {
     age: req.body.age
   });
 
-  User.getUserByUsername(newUser.username, (err, user) => {
-    if (err) throw err;
-    if (user) {
-      return res.json({
-        success: false,
-        msg: "동일한 아이디가 존재합니다. 사용자 등록 실패."
-      });
-    } else {
+  // User.getUserByUsername(newUser.username, (err, user) => {
+  //   if (err) throw err;
+  //   if (user) {
+  //     return res.json({
+  //       success: false,
+  //       msg: "동일한 아이디가 존재합니다. 사용자 등록 실패."
+  //     });
+  //   } else {
       User.addUser(newUser, (err, user) => {
         if (err) {
           res.json({ success: false, msg: "사용자 등록 실패" });
@@ -36,10 +36,11 @@ router.post("/register", (req, res, next) => {
         }
       });
     }
-  });
-});
+);
+//   });
+// });
 
-router.post("/newpw", (req, res, next) => {
+router.post("/register", (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
     email: req.body.email,
@@ -50,6 +51,13 @@ router.post("/newpw", (req, res, next) => {
 
   User.getUserByUsername(newUser.username, (err, user) => {
     if (err) throw err;
+
+    if (user) {
+      return res.json({
+        success: true,
+        msg: "개인정보 수정"
+      });
+    } else {
     User.addUser(newUser, (err, user) => {
       if (err) {
         res.json({ success: false, msg: "개인정보 수정 실패" });
@@ -57,7 +65,8 @@ router.post("/newpw", (req, res, next) => {
         res.json({ success: true, msg: "개인정보 수정 성공" });
       }
     });
-  });
+  }
+});
 });
 
 router.post("/write", (req, res, next) => {
@@ -103,6 +112,90 @@ router.post("/view", (req, res, next) => {
   });
 });
 
+
+
+
+// getEmail 이메일 가져오기
+router.post("/getemail", (req, res, next) => {
+  let newInfo = new User({
+    name: req.body.name,
+    username: req.body.username
+  });
+
+  User.getUserByInfo(newInfo.name, newInfo.username, (err, email) => {
+    if (err) throw err;
+    if (email) {
+      console.log(email);
+    }
+  });
+});
+
+router.post("/sendmail", (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    secure: "true",
+    port: "465",
+    auth: {
+      user: "testG4eng@gmail.com", // must be Gmail
+      pass: "didrudah2"
+    }
+  });
+
+  var mailOptions = {
+    from: "testG4eng@gmail.com",
+    to: `<${req.body.email}>`,
+    cc: `${req.body.name} <${req.body.email}>`,
+    subject: "임시 비밀번호 발급 메일입니다.",
+    html: `
+            <table style="width: 100%; border: none">
+              <thead>
+                <tr style="background-color: #000; color: #fff;">
+                  <th style="padding: 10px 0">이름</th>
+                  <th style="padding: 10px 0">학번</th>
+                  <th style="padding: 10px 0">임시 비밀번호</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center">${req.body.name}</td>
+                  <td style="text-align: center">${req.body.username}</td>
+                  <td style="text-align: center">${req.body.email}</td>
+                </tr>
+              </tbody>
+            </table>
+          `
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+      res.status(200).json({
+        message: "successfuly sent!"
+      });
+    }
+  });
+});
+
+router.post("/check", (req, res, next) => {
+  const password = req.body.password;
+
+   if(password == 'lbc12345') {
+        res.json({
+          success: true,
+          msg : "교수님 인증을 성공했습니다."
+          });
+      } else {
+        return res.json({
+          success: false,
+          msg: "패스워드가 틀렸습니다."
+        });
+      }
+    });
+
+
 // Authenticate 사용자인증, 로그인
 router.post("/authenticate", (req, res, next) => {
   const username = req.body.username;
@@ -128,7 +221,7 @@ router.post("/authenticate", (req, res, next) => {
           success: true,
           token: "JWT " + token,
           userNoPW: {
-            id: user._id,
+            // id: user._id,
             name: user.name,
             username: user.username,
             email: user.email,
@@ -161,18 +254,12 @@ router.get(
   }
 );
 
-router.get(
-  //dashboard
-  "/list",
-  passport.authenticate("jwt", { session: false }),
-  (req, res, next) => {
-    Write.getAll((err, writes) => {
-      if (err) throw err;
-      res.json(writes);
-    });
-  }
-);
-
+router.get("/list", (req, res, next) => {
+  Write.getAll((err, writes) => {
+    if (err) throw err;
+    res.json(writes);
+  });
+});
 router.get(
   //view
   "/list2",

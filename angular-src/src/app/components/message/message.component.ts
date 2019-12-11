@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+// import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from "angular2-flash-messages";
 import { Board2Service } from "../../services/board2.service";
 import { Router } from "@angular/router";
@@ -10,6 +11,7 @@ import { Router } from "@angular/router";
 })
 export class MessageComponent implements OnInit {
   constructor(
+    // private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private Board2Service: Board2Service,
     private router: Router
@@ -23,7 +25,12 @@ export class MessageComponent implements OnInit {
     const message = {
       name: this.name,
       content: this.content
-    };
+    }; // Required Fields
+
+    //     if(!this.validateService.validateWrite(write)){
+    //     this.flashMessage.show('모든 필드들을 채워주세요', {cssClass: 'alert-danger', timeout: 3000});
+    //     return false;
+    //     }
 
     this.Board2Service.messageUser(message).subscribe(data => {
       if (data.success) {

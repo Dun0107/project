@@ -6,8 +6,8 @@ import { FlashMessagesModule } from "angular2-flash-messages";
 import { FlashMessagesService } from "angular2-flash-messages";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthService } from "./services/auth.service";
-import { AuthGuard } from "./guards/auth.guard";
 import { JwtModule } from "@auth0/angular-jwt";
+import { AuthGuard } from "./guards/auth.guard";
 import { BoardService } from "./services/board.service";
 import { ReboardService } from "./services/reboard.service";
 
@@ -21,16 +21,18 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { GyosuComponent } from "./components/gyosu/gyosu.component";
 import { CalComponent } from "./components/cal/cal.component";
+import { Cal2Component } from "./components/cal2/cal2.component";
+import { Cal3Component } from "./components/cal3/cal3.component";
 import { IsComponent } from "./components/is/is.component";
 import { WriteComponent } from "./components/write/write.component";
-import { UserEditComponent } from "./components/user-edit/user-edit.component";
+import { SendmailComponent } from "./components/sendmail/sendmail.component";
 import { ViewComponent } from "./components/view/view.component";
-import { NewpwComponent } from "./components/newpw/newpw.component";
-import { Cal2Component } from "./components/cal2/cal2.component";
-import { MessageComponent } from "./components/message/message.component";
-import { Dashboard2Component } from "./components/dashboard2/dashboard2.component";
-import { Gyosu2Component } from "./components/gyosu2/gyosu2.component";
-import { Cal3Component } from "./components/cal3/cal3.component";
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+import { MessageComponent } from './components/message/message.component';
+import { NewpwComponent } from './components/newpw/newpw.component';
+import { Gyosu2Component } from './components/gyosu2/gyosu2.component';
+import { OnlygyosuComponent } from './components/onlygyosu/onlygyosu.component';
+import { WebComponent } from './components/web/web.component';
 
 @NgModule({
   declarations: [
@@ -43,16 +45,18 @@ import { Cal3Component } from "./components/cal3/cal3.component";
     ProfileComponent,
     GyosuComponent,
     CalComponent,
+    Cal2Component,
+    Cal3Component,
     WriteComponent,
     IsComponent,
-    UserEditComponent,
+    SendmailComponent,
     ViewComponent,
-    NewpwComponent,
-    Cal2Component,
-    MessageComponent,
     Dashboard2Component,
+    MessageComponent,
+    NewpwComponent,
     Gyosu2Component,
-    Cal3Component
+    OnlygyosuComponent,
+    WebComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,7 @@ import { Cal3Component } from "./components/cal3/cal3.component";
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem("id token");
+          return localStorage.getItem("id_token");
         }
       }
     })
@@ -71,9 +75,9 @@ import { Cal3Component } from "./components/cal3/cal3.component";
   providers: [
     ValidateService,
     AuthService,
+    FlashMessagesService,
     BoardService,
     ReboardService,
-    FlashMessagesService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

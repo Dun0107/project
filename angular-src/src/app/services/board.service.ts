@@ -19,21 +19,10 @@ export class BoardService {
 
   constructor(private http: HttpClient) {}
 
-  prepEndpoint(ep) {
-    return ep;
-  }
-
   writeUser(write): Observable<any> {
     const writeUrl = "http://localhost:3000/users/write";
     return this.http.post(writeUrl, write, httpOptions);
   }
-
-  // getList(): Observable<any> {
-  //   const dashboardUrl = this.prepEndpoint("users/dashboard");
-  //   return this.http.get(dashboardUrl, httpOptions);
-  // }
-
-  //수연이코드
   getList(): Observable<any> {
     this.boardToken = localStorage.getItem("id_token");
     const httpOptions1 = {
@@ -46,7 +35,7 @@ export class BoardService {
     return this.http.get(listUrl, httpOptions1);
   }
   storeWriteData(token, write) {
-    localStorage.setItem("id_token", token);
+    localStorage.setItem("", token);
     localStorage.setItem("write", JSON.stringify(write));
     this.boardToken = token;
     this.write = write;

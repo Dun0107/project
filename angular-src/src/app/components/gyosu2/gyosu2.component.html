@@ -1,23 +1,23 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <br>
 
-<div *ngFor="let input of inputList; let i = 1" >
-        <input type="text" id="input-{{i + 1}}" [(ngModel)]="inputList[i].value" />
-        {{inputList[i].value}}
-      </div>
-
-      <button (click)="addInput()">Add Input</button>
-
-
-<!-- 
-<h2 class="page-header">교수님 인증하기 </h2>
-<form (ngSubmit)="onGyosu2Submit()">
+<h2 class="page-header">교수님 인증하기 </h2>
+<form (ngSubmit)="onCheckSubmit()">
   <div class="form-group">
-    <label>계정의 비밀번호를 재입력 해주세요.</label>
+    <label>비밀번호</label>
     <input type="password" class="form-control" name="password" [(ngModel)]="password">
   </div>
   <input type="submit" class="btn btn-primary" value="인증하기">
-&nbsp;
+  &nbsp;
+ 
 
+</form>
+<!-- <script>
+var pass2='lbc12345';
 
-</form> -->
+if( angular.equals(this.password, pass2)){
+  console.log('s');
+}else{
+  console.log('b');
+}
+</script> -->
