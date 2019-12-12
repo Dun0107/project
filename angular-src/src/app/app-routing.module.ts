@@ -22,6 +22,7 @@ import { WebComponent } from "./components/web/web.component";
 import { MessageComponent } from "./components/message/message.component";
 import { Dashboard2Component } from "./components/dashboard2/dashboard2.component";
 import { NewpwComponent } from "./components/newpw/newpw.component";
+import { JtbcComponent } from "./components/jtbc/jtbc.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: "sendmail", component: SendmailComponent },
   { path: "view", component: ViewComponent },
   { path: "web", component: WebComponent },
+  { path: "jtbc", component: JtbcComponent },
   { path: "message", component: MessageComponent },
   {
     path: "dashboard2",

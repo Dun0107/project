@@ -33,6 +33,7 @@ import { NewpwComponent } from './components/newpw/newpw.component';
 import { Gyosu2Component } from './components/gyosu2/gyosu2.component';
 import { OnlygyosuComponent } from './components/onlygyosu/onlygyosu.component';
 import { WebComponent } from './components/web/web.component';
+import { JtbcComponent } from './components/jtbc/jtbc.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { WebComponent } from './components/web/web.component';
     Gyosu2Component,
     OnlygyosuComponent,
     WebComponent,
+    JtbcComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ export class ViewComponent implements OnInit {
   writes: any;
   views: any;
 
+  title: string;
   name: string;
   content: string;
   ngOnInit() {
