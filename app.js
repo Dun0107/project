@@ -9,6 +9,21 @@ const users = require('./routes/users');
 const config = require('./config/database');
 const nodemailer = require("nodemailer");
 const User = require('./models/user');
+const bcrypt = require('bcryptjs');
+
+function makeid()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+const newPw = makeid();
+console.log(newPw);
+var gl_email;
 
 mongoose.connect(config.database, { useNewUrlParser: true });
 
@@ -38,9 +53,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 // port number 
 const port = process.env.PORT || 3000;
 
-
-
 app.post('/sendmail', (req, res) => {
+  const name = req.body.name;
+  const username = req.body.username;
+  var email;
+  
+  findEmail = (n, un, pw, item) => {
+    User.findOneAndUpdate({name: n, username: un}, {$set:{password: pw}}, (err,info) => {
+      let email = item(info.email);
+      return email;
+    });
+    
+  };
+
+  findEmail(name, username, newPw, mail => console.log(email));
+  
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -54,7 +81,7 @@ app.post('/sendmail', (req, res) => {
   
   var mailOptions = {
     from: 'testG4eng@gmail.com',
-    to: `<${req.body.email}>`,
+    to: `${req.body.email}`,
     cc:`${req.body.name} <${req.body.email}>`,
     subject: '임시 비밀번호 발급 메일입니다.',
     html: `
@@ -70,7 +97,7 @@ app.post('/sendmail', (req, res) => {
                 <tr>
                   <td style="text-align: center">${req.body.name}</td>
                   <td style="text-align: center">${req.body.username}</td>
-                  <td style="text-align: center">${req.body.email}</td>
+                  <td style="text-align: center">${newPw}</td>
                 </tr>
               </tbody>
             </table>
