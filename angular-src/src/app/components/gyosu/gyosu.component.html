@@ -1,0 +1,65 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+
+<form class="form-horizontal">
+  <div class="text-center">
+    <br />
+    <h4>이병천 교수님 웹 어플리케이션 보안 과제 제출</h4>
+  </div>
+  <hr />
+  <div class="form-group">
+    <label for="title" class="col-md-2 control-label">제목</label>
+    <div class="col-md-10">
+      <input
+        type="text"
+        data-ng-model="tutorial.title"
+        name="title"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description" class="col-md-2 control-label">제출자</label>
+    <div class="col-md-10">
+      <input
+        type="text"
+        data-ng-model="tutorial.description"
+        name="description"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="attachment" class="col-md-2 control-label">첨부파일</label>
+    <div class="col-md-10">
+      <input
+        type="file"
+        ngFileSelect
+        [options]="options"
+        (onUpload)="handleUpload($event)"
+        (beforeUpload)="beforeUpload($event)"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <a class="btn btn-primary" href="http://localhost/list.php" role="button"
+        >제출한 파일</a
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <a
+        class="btn btn-primary"
+        href="http://localhost/loadfile.html"
+        role="button"
+        >파일 확인하기</a
+      >
+    </div>
+  </div>
+</form>

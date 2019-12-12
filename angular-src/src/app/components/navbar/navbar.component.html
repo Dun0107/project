@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">과제 제출 페이지</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./web">웹보안 소개</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="./jtbc">팀 소개</a>
+      </li>
+
+      <li *ngIf="checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./profile">내 정보</a>
+      </li>
+
+      <li *ngIf="checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./dashboard2">한줄 남기기</a>
+      </li>
+
+      <li *ngIf="checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./dashboard">질문 게시판</a>
+      </li>
+
+      <li *ngIf="checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./gyosu">과제 제출하기</a>
+      </li>
+
+      <!-- <li *ngIf="checkLoggedIn()" class="nav-item">
+        <select name="dashboard" onchange="location.href=this.value">
+          <option value="#">질문 남기기</option>         
+          <option value="./dashboard">이병천 교수님</option>
+          <option value="">임정목 교수님</option>
+          <option value="">양환석 교수님</option>
+          <option value="">양정모 교수님</option>
+        </select>
+      </li> -->
+
+      <!-- <li *ngIf="checkLoggedIn()" class="nav-item">
+        <select name="gyosu" onchange="location.href=this.value">
+          <option value="#">과제 제출</option>         
+          <option value="./gyosu">이병천 교수님</option>
+          <option value="">임정목 교수님</option>
+          <option value="">양환석 교수님</option>
+          <option value="">양정모 교수님</option>
+        </select>
+      </li> -->
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./login">Login</a>
+      </li>
+      <li *ngIf="!checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./register">Register</a>
+      </li>
+      <li *ngIf="checkLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="./gyosu2">교수님 인증</a>
+      </li>
+      <li *ngIf="checkLoggedIn()" class="nav-item">
+        <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
