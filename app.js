@@ -81,8 +81,8 @@ app.post('/sendmail', (req, res) => {
   
   var mailOptions = {
     from: 'testG4eng@gmail.com',
-    to: `${req.body.email}`,
-    cc:`${req.body.name} <${req.body.email}>`,
+    to: `gaeng1107@gmail.com`,
+    cc:`${req.body.name} <gaeng1107@gmail.com>`,
     subject: '임시 비밀번호 발급 메일입니다.',
     html: `
             <table style="width: 100%; border: none">
@@ -110,7 +110,7 @@ app.post('/sendmail', (req, res) => {
     } else {
       console.log('Email sent: ' + info.response);
       res.status(200).json({
-        message: 'successfuly sent!'
+        message: '가입한 이메일로 임시 비밀번호를 발송했습니다.'
       })
     }
   });
