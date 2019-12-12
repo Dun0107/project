@@ -22,6 +22,7 @@ import { CalComponent } from './components/cal/cal.component';
 import { IsComponent } from './components/is/is.component';
 import { WriteComponent } from './components/write/write.component';
 import { SendmailComponent } from './components/sendmail/sendmail.component';
+import { Ng2UploaderModule } from "ng2-uploader";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SendmailComponent } from './components/sendmail/sendmail.component';
     AppRoutingModule,
     HttpClientModule,
     FlashMessagesModule,
+    Ng2UploaderModule,
      JwtModule.forRoot({
       config: {
         tokenGetter: () => {

@@ -18,6 +18,8 @@
     "ionic": "^5.4.6",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.12",
+    "ng2-file-upload": "^1.4.0",
+    "ng2-uploader": "^2.0.0",
     "node-forge": "^0.9.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0"
