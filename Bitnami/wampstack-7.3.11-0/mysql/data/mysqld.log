@@ -1,0 +1,31 @@
+2019-11-30T15:26:22.092860Z 0 [Warning] [MY-011068] [Server] The syntax 'expire-logs-days' is deprecated and will be removed in a future release. Please use binlog_expire_logs_seconds instead.
+2019-11-30T15:26:22.094872Z 0 [System] [MY-013169] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe (mysqld 8.0.18) initializing of server in progress as process 32516
+2019-11-30T15:26:23.951381Z 0 [Warning] [MY-010161] [Server] You need to use --log-bin to make --expire_logs_days work.
+2019-11-30T15:26:24.677804Z 5 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2019-11-30T15:26:28.199785Z 0 [Warning] [MY-011068] [Server] The syntax 'expire-logs-days' is deprecated and will be removed in a future release. Please use binlog_expire_logs_seconds instead.
+2019-11-30T15:26:28.200023Z 0 [System] [MY-010116] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe (mysqld 8.0.18) starting as process 32564
+2019-11-30T15:26:29.494889Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-11-30T15:26:29.579072Z 0 [System] [MY-010931] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-11-30T15:26:29.735298Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2019-11-30T15:27:06.910279Z 10 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.18).
+2019-11-30T15:27:06.913639Z 0 [System] [MY-013105] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: Normal shutdown.
+2019-11-30T15:27:07.278421Z 0 [System] [MY-010910] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: Shutdown complete (mysqld 8.0.18)  MySQL Community Server - GPL.
+2019-11-30T15:28:26.305354Z 0 [Warning] [MY-011068] [Server] The syntax 'expire-logs-days' is deprecated and will be removed in a future release. Please use binlog_expire_logs_seconds instead.
+2019-11-30T15:28:26.305516Z 0 [System] [MY-010116] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe (mysqld 8.0.18) starting as process 33396
+2019-11-30T15:28:27.239333Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-11-30T15:28:27.323187Z 0 [System] [MY-010931] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-11-30T15:28:27.407615Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2019-12-11T18:22:23.197325Z 0 [System] [MY-013105] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: Normal shutdown.
+2019-12-11T18:22:24.052260Z 0 [System] [MY-010910] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: Shutdown complete (mysqld 8.0.18)  MySQL Community Server - GPL.
+2019-12-11T18:22:53.532068Z 0 [Warning] [MY-011068] [Server] The syntax 'expire-logs-days' is deprecated and will be removed in a future release. Please use binlog_expire_logs_seconds instead.
+2019-12-11T18:22:53.534078Z 0 [System] [MY-010116] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe (mysqld 8.0.18) starting as process 2504
+2019-12-11T18:22:59.417661Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-12-11T18:22:59.491296Z 0 [System] [MY-010931] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-12-11T18:22:59.579154Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2019-12-11T18:25:20.325254Z 0 [Warning] [MY-011068] [Server] The syntax 'expire-logs-days' is deprecated and will be removed in a future release. Please use binlog_expire_logs_seconds instead.
+2019-12-11T18:25:20.326897Z 0 [System] [MY-010116] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe (mysqld 8.0.18) starting as process 6508
+2019-12-11T18:25:24.505315Z 0 [System] [MY-010229] [Server] Starting crash recovery...
+2019-12-11T18:25:24.520451Z 0 [System] [MY-010232] [Server] Crash recovery finished.
+2019-12-11T18:25:24.784208Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-12-11T18:25:24.853154Z 0 [System] [MY-010931] [Server] C:\Bitnami\WAMPST~1.11-\mysql\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-12-11T18:25:25.002471Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
