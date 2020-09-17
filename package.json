@@ -18,7 +18,7 @@
     "ionic": "^5.4.6",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.12",
-    "node-forge": "^0.9.1",
+    "node-forge": "^0.10.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0"
   }
